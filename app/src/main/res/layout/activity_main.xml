@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.razir.progressexample.MainActivity">
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/buttonAnimatedDrawable"
+        style="@style/DefaultButtonStyle"
+        android:text="@string/animatedDrawable"
+        app:backgroundTint="@color/orange"
+        app:layout_constraintBottom_toTopOf="@id/buttonProgressRightText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/buttonProgressRightText"
+        style="@style/DefaultButtonStyle"
+        android:layout_marginTop="@dimen/buttonsMargin"
+        android:text="@string/progressRight"
+        app:backgroundTint="@color/green"
+        app:layout_constraintBottom_toTopOf="@id/buttonProgressLeftText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonAnimatedDrawable" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/buttonProgressLeftText"
+        style="@style/DefaultButtonStyle"
+        android:layout_marginTop="@dimen/buttonsMargin"
+        android:text="@string/progressLeft"
+        app:backgroundTint="@color/blueGrey"
+        app:layout_constraintBottom_toTopOf="@id/buttonProgressCustomStyle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonProgressRightText" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/buttonProgressCustomStyle"
+        style="@style/DefaultButtonStyle"
+        android:layout_marginTop="@dimen/buttonsMargin"
+        android:text="@string/progressCustomStyle"
+        app:backgroundTint="@color/deepPurple"
+        app:layout_constraintBottom_toTopOf="@id/buttonProgressMixed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonProgressLeftText" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/buttonProgressMixed"
+        style="@style/DefaultButtonStyle"
+        android:layout_marginTop="@dimen/buttonsMargin"
+        android:text="@string/mixedBehaviour"
+        app:backgroundTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonProgressCustomStyle" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultBtnWidth">210dp</dimen>
+    <dimen name="buttonsMargin">20dp</dimen>
+    <dimen name="doneSize">25dp</dimen>
+    <dimen name="drawableTextMargin">10dp</dimen>
+    <dimen name="progressRadius">10dp</dimen>
+    <dimen name="progressStroke">5dp</dimen>
+    <dimen name="textMarginStyled">20dp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MaterialProgress</string>
+    <string name="loading">Submitting</string>
+    <string name="submitted">Done</string>
+    <string name="submit">Submit</string>
+    <string name="animatedDrawable">Animated Drawable</string>
+    <string name="progressRight">Progress right</string>
+    <string name="progressLeft">Progress left</string>
+    <string name="progressCustomStyle">Progress styled</string>
+    <string name="mixedBehaviour">Mixed behaviour</string>
+    <string name="saved">Saved</string>
+</resources>
