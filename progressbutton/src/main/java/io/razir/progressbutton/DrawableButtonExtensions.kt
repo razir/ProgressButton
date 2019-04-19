@@ -13,19 +13,104 @@ import android.view.View
 import android.widget.TextView
 import java.util.*
 
-private val activeViews = WeakHashMap<TextView, DrawableViewData>()
-
-private data class DrawableViewData(var drawable: Drawable, val callback: Drawable.Callback)
-
-private const val DEFAULT_DRAWABLE_MARGIN_DP = 10f
-
-fun TextView.showProgress(params: ProgressParams.() -> Unit) {
+/**
+ *   Shows progress on the button with defined params.
+ *   If params are not defined uses the default one.
+ *
+ *   The example of usage
+ *
+ *   button.showProgress { buttonText = "Loading", progressColor = Color.WHITE }
+ *
+ *   If you want to continue using your button after showing the progress,
+ *   please hide the progress and clean up resources by calling:
+ *   @see TextView.hideProgress
+ *
+ *   @receiver button to show the progress
+ *   @param params use to set the text,position and customize the progress look
+ */
+fun TextView.showProgress(params: ProgressParams.() -> Unit = {}) {
     val paramValues = ProgressParams()
     paramValues.params()
     showProgress(paramValues)
 }
 
-fun TextView.showProgress(params: ProgressParams) {
+/**
+ *   Shows your animated drawable on the button with defined params.
+ *   Important: drawable bounds should be defined already (eg. drawable.setBounds)
+ *   If params are not defined uses the default one.
+ *
+ *   The example of usage:
+ *
+ *   button.showDrawable(yourDrawable) { buttonText = "Done" }
+ *
+ *   If you want to continue using your button after showing the drawable,
+ *   please hide the drawable and clean up resources by calling:
+ *   @see TextView.hideDrawable
+ *
+ *   @receiver button to show the drawable
+ *   @param drawable your animated drawable. Will be played automatically
+ *   @param params use to set the text,position and margin
+ */
+fun TextView.showDrawable(
+    drawable: Drawable,
+    params: DrawableParams.() -> Unit = {}
+) {
+    val paramValues = DrawableParams()
+    paramValues.params()
+    showDrawable(drawable, paramValues)
+}
+
+/**
+ * @return true if progress is currently showing and false if not
+ */
+fun TextView.isProgressActive() = isDrawableActive()
+
+/**
+ * @return true if drawable is currently showing and false if not
+ */
+fun TextView.isDrawableActive(): Boolean {
+    return activeViews.contains(this)
+}
+
+/**
+ * Hides the progress and clean up internal references
+ * This method is required to call if you want to continue using your button
+ * @param newText String value to show after hiding the progress
+ */
+fun TextView.hideProgress(newText: String? = null) = hideDrawable(newText)
+
+/**
+ * Hides the progress and clean up internal references
+ * This method is required to call if you want to continue using your button
+ * @param newTextRes String resource to show after hiding the progress
+ */
+fun TextView.hideProgress(@StringRes newTextRes: Int) = hideDrawable(newTextRes)
+
+/**
+ * Hides the progress and clean up internal references
+ * This method is required to call if you want to continue using your button
+ * @param newText String value to show after hiding the progress
+ */
+fun TextView.hideDrawable(newText: String? = null) {
+    cleanUpDrawable()
+    this.text = newText
+}
+
+/**
+ * Hides the drawable and clean up internal references
+ * This method is required to call if you want to continue using your button
+ * @param newTextRes String resource to show after hiding the progress
+ */
+fun TextView.hideDrawable(@StringRes newTextRes: Int) {
+    hideDrawable(context.getString(newTextRes))
+}
+
+
+/**
+ *   Shows progress on button.
+ *   [Java back support version]
+ */
+internal fun TextView.showProgress(params: ProgressParams) {
     params.apply {
         val res = context.resources
         val progressStrokeValue = progressStrokeRes?.let { res.getDimensionPixelSize(it) } ?: progressStrokePx
@@ -41,16 +126,11 @@ fun TextView.showProgress(params: ProgressParams) {
     }
 }
 
-fun TextView.showDrawable(
-    drawable: Drawable,
-    params: DrawableParams.() -> Unit
-) {
-    val paramValues = DrawableParams()
-    paramValues.params()
-    showDrawable(drawable, paramValues)
-}
-
-fun TextView.showDrawable(
+/*
+    Shows any animated drawable on button.
+    [Java back support version]
+ */
+internal fun TextView.showDrawable(
     drawable: Drawable,
     paramValues: DrawableParams
 ) {
@@ -85,25 +165,6 @@ private fun TextView.showDrawable(
     }
 }
 
-
-fun TextView.isProgressActive() = isDrawableActive()
-
-fun TextView.isDrawableActive(): Boolean {
-    return activeViews.contains(this)
-}
-
-fun TextView.hideProgress(newText: String? = null) = hideDrawable(newText)
-
-fun TextView.hideProgress(@StringRes newTextRes: Int) = hideDrawable(newTextRes)
-
-fun TextView.hideDrawable(newText: String? = null) {
-    cleanUpDrawable()
-    this.text = newText
-}
-
-fun TextView.hideDrawable(@StringRes newTextRes: Int) {
-    hideDrawable(context.getString(newTextRes))
-}
 
 private fun addViewListener(textView: TextView) {
     textView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
@@ -207,6 +268,12 @@ private fun TextView.cleanUpDrawable() {
         activeViews.remove(this)
     }
 }
+
+private val activeViews = WeakHashMap<TextView, DrawableViewData>()
+
+private data class DrawableViewData(var drawable: Drawable, val callback: Drawable.Callback)
+
+private const val DEFAULT_DRAWABLE_MARGIN_DP = 10f
 
 private fun Context.dpToPixels(dpValue: Float) =
     TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, resources.displayMetrics).toInt()
