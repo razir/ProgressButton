@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         buttonProgressLeftText.setOnClickListener {
             showProgressLeft(buttonProgressLeftText)
         }
+        buttonProgressCenter.setOnClickListener {
+            showProgressCenter(buttonProgressCenter)
+        }
         buttonProgressCustomStyle.setOnClickListener {
             showProgressCustom(buttonProgressCustomStyle)
         }
@@ -76,6 +79,19 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             button.isEnabled = true
             button.hideProgress(R.string.progressLeft)
+        }, 3000)
+    }
+
+    private fun showProgressCenter(button: Button) {
+        button.showProgress {
+            progressColor = Color.WHITE
+            gravity = DrawableButton.GRAVITY_CENTER
+        }
+
+        button.isEnabled = false
+        Handler().postDelayed({
+            button.isEnabled = true
+            button.hideProgress(R.string.progressCenter)
         }, 3000)
     }
 

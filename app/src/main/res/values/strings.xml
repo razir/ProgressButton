@@ -9,4 +9,5 @@
     <string name="progressCustomStyle">Progress styled</string>
     <string name="mixedBehaviour">Mixed behaviour</string>
     <string name="saved">Saved</string>
+    <string name="progressCenter">Progress center</string>
 </resources>
