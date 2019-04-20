@@ -6,13 +6,8 @@ import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.text.SpannableString
-import android.view.View
 import android.widget.TextView
-import java.util.*
 import kotlin.collections.ArrayList
-
-private val attachedViews = WeakHashMap<TextView, TextChangeAnimatorParams>()
-private val activeAnimations = WeakHashMap<TextView, MutableList<Animator>>()
 
 fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams.() -> Unit = {}) {
     val paramValues = TextChangeAnimatorParams()
@@ -29,7 +24,7 @@ fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams?) {
             animParams.textColor = ContextCompat.getColor(context, animParams.textColorRes!!)
         }
     }
-    addViewListener()
+    addTextAnimationAttachViewListener()
     attachedViews[this] = params
 }
 
@@ -37,7 +32,7 @@ fun TextView.detachTextChangeAnimator() {
     if (attachedViews.containsKey(this)) {
         cancelAnimations()
         attachedViews.remove(this)
-        removeViewListener()
+        removeTextAnimationAttachViewListener()
     }
 }
 
@@ -137,7 +132,7 @@ private fun TextView.resetColor() {
     }
 }
 
-private fun TextView.cancelAnimations() {
+internal fun TextView.cancelAnimations() {
     if (activeAnimations.containsKey(this)) {
         val animations = activeAnimations[this]!!
         val copy = ArrayList<Animator>(animations)
@@ -158,27 +153,6 @@ private fun TextView.getAnimateTextColor(): Int {
         else -> {
             params.textColor
         }
-    }
-}
-
-private fun TextView.addViewListener() {
-    addOnAttachStateChangeListener(attachListener)
-}
-
-private fun TextView.removeViewListener() {
-    removeOnAttachStateChangeListener(attachListener)
-}
-
-private val attachListener = object : View.OnAttachStateChangeListener {
-    override fun onViewDetachedFromWindow(v: View) {
-        if (attachedViews.containsKey(v)) {
-            (v as TextView).cancelAnimations()
-            attachedViews.remove(v)
-        }
-        v.removeOnAttachStateChangeListener(this)
-    }
-
-    override fun onViewAttachedToWindow(v: View?) {
     }
 }
 

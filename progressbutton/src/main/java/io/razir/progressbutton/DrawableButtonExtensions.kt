@@ -9,9 +9,7 @@ import android.support.v4.widget.CircularProgressDrawable
 import android.text.SpannableString
 import android.text.Spanned
 import android.util.TypedValue
-import android.view.View
 import android.widget.TextView
-import java.util.*
 
 /**
  *   Shows progress on the button with defined params.
@@ -168,19 +166,11 @@ private fun TextView.showDrawable(
         this.text = newText
     }
 
-    addViewListener(this)
+    addDrawableAttachViewListener()
     setupDrawableCallback(this, drawable)
     if (drawable is Animatable) {
         drawable.start()
     }
-}
-
-private fun addViewListener(textView: TextView) {
-    textView.addOnAttachStateChangeListener(viewListener)
-}
-
-private fun removeViewListener(textView: TextView) {
-    textView.removeOnAttachStateChangeListener(viewListener)
 }
 
 private fun setupDrawableCallback(textView: TextView, drawable: Drawable) {
@@ -256,39 +246,7 @@ private fun getDrawableSpannable(
     }
 }
 
-private fun TextView.cleanUpDrawable() {
-    if (activeViews.containsKey(this)) {
-        activeViews[this]?.drawable?.apply {
-            if (this is Animatable) {
-                stop()
-            }
-            callback = null
-        }
-        activeViews.remove(this)
-    }
-    removeViewListener(this)
-}
-
-val viewListener = object : View.OnAttachStateChangeListener {
-    override fun onViewDetachedFromWindow(v: View?) {
-        if (activeViews.containsKey(v)) {
-            activeViews[v]?.drawable?.apply {
-                if (this is Animatable) {
-                    stop()
-                }
-            }
-            activeViews.remove(v)
-        }
-        v?.removeOnAttachStateChangeListener(this)
-    }
-
-    override fun onViewAttachedToWindow(v: View?) {
-    }
-}
-
-private val activeViews = WeakHashMap<TextView, DrawableViewData>()
-
-private data class DrawableViewData(var drawable: Drawable, val callback: Drawable.Callback)
+internal data class DrawableViewData(var drawable: Drawable, val callback: Drawable.Callback)
 
 private const val DEFAULT_DRAWABLE_MARGIN_DP = 10f
 
