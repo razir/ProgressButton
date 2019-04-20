@@ -175,24 +175,12 @@ private fun TextView.showDrawable(
     }
 }
 
-
 private fun addViewListener(textView: TextView) {
-    textView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
-        override fun onViewDetachedFromWindow(v: View?) {
-            if (activeViews.containsKey(v)) {
-                activeViews[v]?.drawable?.apply {
-                    if (this is Animatable) {
-                        stop()
-                    }
-                }
-                activeViews.remove(v)
-            }
-            v?.removeOnAttachStateChangeListener(this)
-        }
+    textView.addOnAttachStateChangeListener(viewListener)
+}
 
-        override fun onViewAttachedToWindow(v: View?) {
-        }
-    })
+private fun removeViewListener(textView: TextView) {
+    textView.removeOnAttachStateChangeListener(viewListener)
 }
 
 private fun setupDrawableCallback(textView: TextView, drawable: Drawable) {
@@ -277,6 +265,24 @@ private fun TextView.cleanUpDrawable() {
             callback = null
         }
         activeViews.remove(this)
+    }
+    removeViewListener(this)
+}
+
+val viewListener = object : View.OnAttachStateChangeListener {
+    override fun onViewDetachedFromWindow(v: View?) {
+        if (activeViews.containsKey(v)) {
+            activeViews[v]?.drawable?.apply {
+                if (this is Animatable) {
+                    stop()
+                }
+            }
+            activeViews.remove(v)
+        }
+        v?.removeOnAttachStateChangeListener(this)
+    }
+
+    override fun onViewAttachedToWindow(v: View?) {
     }
 }
 

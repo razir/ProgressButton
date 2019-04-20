@@ -3,32 +3,15 @@ package io.razir.progressbutton
 import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
 import android.support.v4.content.ContextCompat
 import android.text.SpannableString
+import android.view.View
 import android.widget.TextView
 import java.util.*
 
 private val attachedViews = WeakHashMap<TextView, TextChangeAnimatorParams>()
 private val activeAnimations = WeakHashMap<TextView, MutableList<Animator>>()
-
-class TextChangeAnimatorParams {
-    var useCurrentTextColor: Boolean = true
-
-    @ColorInt
-    var textColor: Int = 0
-
-    var textColorList: ColorStateList? = null
-
-    @ColorRes
-    var textColorRes: Int? = null
-
-    var fadeInMills = 150L
-    var fadeOutMills = 150L
-}
 
 fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams.() -> Unit = {}) {
     val paramValues = TextChangeAnimatorParams()
@@ -45,6 +28,7 @@ fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams?) {
             animParams.textColor = ContextCompat.getColor(context, animParams.textColorRes!!)
         }
     }
+    addViewListener()
     attachedViews[this] = params
 }
 
@@ -52,6 +36,7 @@ fun TextView.detachTextChangeAnimator() {
     if (attachedViews.containsKey(this)) {
         cancelAnimations()
         attachedViews.remove(this)
+        removeViewListener()
     }
 }
 
@@ -171,4 +156,26 @@ private fun TextView.getAnimateTextColor(): Int {
         }
     }
 }
+
+private fun TextView.addViewListener() {
+    addOnAttachStateChangeListener(attachListener)
+}
+
+private fun TextView.removeViewListener() {
+    removeOnAttachStateChangeListener(attachListener)
+}
+
+private val attachListener = object : View.OnAttachStateChangeListener {
+    override fun onViewDetachedFromWindow(v: View) {
+        if (attachedViews.containsKey(v)) {
+            (v as TextView).cancelAnimations()
+            attachedViews.remove(v)
+        }
+        v.removeOnAttachStateChangeListener(this)
+    }
+
+    override fun onViewAttachedToWindow(v: View?) {
+    }
+}
+
 
