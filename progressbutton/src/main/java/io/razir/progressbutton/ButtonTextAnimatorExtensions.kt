@@ -9,6 +9,7 @@ import android.text.SpannableString
 import android.view.View
 import android.widget.TextView
 import java.util.*
+import kotlin.collections.ArrayList
 
 private val attachedViews = WeakHashMap<TextView, TextChangeAnimatorParams>()
 private val activeAnimations = WeakHashMap<TextView, MutableList<Animator>>()
@@ -126,18 +127,21 @@ private fun TextView.cleaAnimator(animator: Animator) {
 }
 
 private fun TextView.resetColor() {
-    val params = attachedViews[this]!!
-    params.textColorList?.let {
-        setTextColor(it)
-    } ?: run {
-        setTextColor(params.textColor)
+    if (isAnimatorAttached()) {
+        val params = attachedViews[this]!!
+        params.textColorList?.let {
+            setTextColor(it)
+        } ?: run {
+            setTextColor(params.textColor)
+        }
     }
 }
 
 private fun TextView.cancelAnimations() {
     if (activeAnimations.containsKey(this)) {
-        val animations = activeAnimations[this]
-        animations?.forEach {
+        val animations = activeAnimations[this]!!
+        val copy = ArrayList<Animator>(animations)
+        copy.forEach {
             it.cancel()
         }
         activeAnimations.remove(this)
