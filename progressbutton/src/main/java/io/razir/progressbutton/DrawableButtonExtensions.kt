@@ -93,7 +93,11 @@ fun TextView.hideProgress(@StringRes newTextRes: Int) = hideDrawable(newTextRes)
  */
 fun TextView.hideDrawable(newText: String? = null) {
     cleanUpDrawable()
-    this.text = newText
+    if (isAnimatorAttached()) {
+        animateTextChange(newText)
+    } else {
+        this.text = newText
+    }
 }
 
 /**
@@ -156,7 +160,13 @@ private fun TextView.showDrawable(
     } else {
         textMarginPx
     }
-    this.text = getDrawableSpannable(drawable, text, gravity, drawableMargin)
+    val animatorAttached = isAnimatorAttached()
+    val newText = getDrawableSpannable(drawable, text, gravity, drawableMargin, animatorAttached)
+    if (animatorAttached) {
+        animateTextChange(newText)
+    } else {
+        this.text = newText
+    }
 
     addViewListener(this)
     setupDrawableCallback(this, drawable)
@@ -232,9 +242,10 @@ private fun getDrawableSpannable(
     drawable: Drawable,
     text: String?,
     gravity: Int,
-    drawableMarginPx: Int
+    drawableMarginPx: Int,
+    useTextAlpha: Boolean
 ): SpannableString {
-    val drawableSpan = DrawableSpan(drawable)
+    val drawableSpan = DrawableSpan(drawable, useTextAlpha = useTextAlpha)
     return when (gravity) {
         DrawableButton.GRAVITY_TEXT_START -> {
             drawableSpan.paddingEnd = drawableMarginPx
