@@ -1,6 +1,15 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.9'
+    }
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -22,5 +31,15 @@ android {
 
 dependencies {
     implementation "com.android.support:support-v4:$supportLibraryVersion"
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+publish {
+    userOrg = 'antonhadutski'
+    repoName = 'ProgressButton'
+    groupId = 'com.github.razir.progressbutton'
+    artifactId = 'progressbutton'
+    publishVersion = '1.0.0'
+    desc = 'ProgressButton gives the ability to add a progress bar to your button without adjusting a layout'
+    website = 'https://github.com/razir/ProgressButton'
 }
