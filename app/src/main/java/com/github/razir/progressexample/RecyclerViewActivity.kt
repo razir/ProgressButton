@@ -1,4 +1,4 @@
-package io.razir.progressexample
+package com.github.razir.progressexample
 
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.razir.progressbutton.*
+import com.github.razir.progressbutton.*
 import kotlinx.android.synthetic.main.activity_rv.*
 import kotlinx.android.synthetic.main.item_button.view.*
 

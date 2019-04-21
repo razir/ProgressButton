@@ -1,4 +1,4 @@
-package io.razir.progressbutton
+package com.github.razir.progressbutton
 
 import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes

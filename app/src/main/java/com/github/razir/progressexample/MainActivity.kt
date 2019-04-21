@@ -1,4 +1,4 @@
-package io.razir.progressexample
+package com.github.razir.progressexample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

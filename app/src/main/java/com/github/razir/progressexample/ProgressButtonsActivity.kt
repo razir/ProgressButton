@@ -1,4 +1,4 @@
-package io.razir.progressexample
+package com.github.razir.progressexample
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import io.razir.progressbutton.*
+import com.github.razir.progressbutton.*
 import kotlinx.android.synthetic.main.activity_progress_buttons.*
 
 class ProgressButtonsActivity : AppCompatActivity() {

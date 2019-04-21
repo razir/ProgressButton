@@ -1,43 +1,47 @@
-package io.razir.progressbutton
+package com.github.razir.progressbutton
 
+import android.graphics.drawable.Drawable
 import android.support.annotation.StringRes
 import android.widget.TextView
 
 /**
- * Java back support class to show the progress. If you use kotlin please consider to use extensions
- * @see TextView.showProgress
+ * Java back support class to show the drawable. If you use kotlin please consider to use extensions
+ * @see TextView.showDrawable
  */
-class ProgressButtonUtils {
+class DrawableButtonUtils {
 
     companion object {
 
         /**
-         *   Shows your progress on the button with defined params.
+         *   Shows your animated drawable on the button with defined params.
+         *   Important: drawable bounds should be defined already (eg. drawable.setBounds)
+         *
          *   If params are not defined uses the default one.
          *
          *   The example of usage:
          *
-         *   ProgressButtonUtils.showProgress(button,new ProgressParams())
+         *   DrawableButtonUtils.showDrawable(button,yourDrawable,new DrawableParams())
          *
          *   If you want to continue using your button after showing the progress,
          *   please hide the progress and clean up resources by calling:
-         *   @see hideProgress
+         *   @see hideDrawable
          *
-         *   @param view to show the progress
+         *   @param view to show the drawable
          *   @param drawable your animated drawable. Will be played automatically
          *   @param params use to set the text,position and margin
          */
         @JvmStatic
-        fun showProgress(
-            textView: TextView,
-            progressParams: ProgressParams
-        ) = textView.showProgress(progressParams)
+        fun showDrawable(
+            view: TextView,
+            drawable: Drawable,
+            params: DrawableParams
+        ) = view.showDrawable(drawable, params)
 
         /**
-         * @return true if progress is currently showing and false if not
+         * @return true if drawable is currently showing and false if not
          */
         @JvmStatic
-        fun isProgressActive(textView: TextView) = textView.isProgressActive()
+        fun isDrawableActive(textView: TextView) = textView.isDrawableActive()
 
         /**
          * Hides the progress and clean up internal references
@@ -45,7 +49,7 @@ class ProgressButtonUtils {
          * @param newText String value to show after hiding the progress
          */
         @JvmStatic
-        fun hideProgress(textView: TextView, newText: String?) = textView.hideProgress(newText)
+        fun hideDrawable(view: TextView, newText: String?) = view.hideDrawable(newText)
 
         /**
          * Hides the progress and clean up internal references
@@ -53,6 +57,6 @@ class ProgressButtonUtils {
          * @param newTextRes String resource to show after hiding the progress
          */
         @JvmStatic
-        fun hideProgress(textView: TextView, @StringRes newTextRes: Int) = textView.hideProgress(newTextRes)
+        fun hideDrawable(view: TextView, @StringRes newTextRes: Int) = view.hideDrawable(newTextRes)
     }
 }

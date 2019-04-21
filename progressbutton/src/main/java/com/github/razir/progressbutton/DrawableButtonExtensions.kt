@@ -1,4 +1,4 @@
-package io.razir.progressbutton
+package com.github.razir.progressbutton
 
 import android.content.Context
 import android.graphics.drawable.Animatable

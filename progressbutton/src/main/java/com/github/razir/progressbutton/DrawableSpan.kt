@@ -1,4 +1,4 @@
-package io.razir.progressbutton
+package com.github.razir.progressbutton
 
 import android.graphics.Canvas
 import android.graphics.Color
