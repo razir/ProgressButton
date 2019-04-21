@@ -49,7 +49,7 @@ private fun TextView.removeDrawableAttachViewListener() {
     removeOnAttachStateChangeListener(drawablesAttachListener)
 }
 
-internal fun TextView.cleanUpDrawable() {
+fun TextView.cleanUpDrawable() {
     if (activeViews.containsKey(this)) {
         activeViews[this]?.drawable?.apply {
             if (this is Animatable) {

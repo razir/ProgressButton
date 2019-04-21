@@ -10,4 +10,7 @@
     <string name="mixedBehaviour">Mixed behaviour</string>
     <string name="saved">Saved</string>
     <string name="progressCenter">Progress center</string>
+    <string name="openProgressButtons">See Progress Buttons</string>
+    <string name="openDrawableButtons">See animated drawable buttons</string>
+    <string name="openRecyclerView">see recycler view example</string>
 </resources>
