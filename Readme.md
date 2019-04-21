@@ -19,23 +19,25 @@
 
 ### Basic example
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-            // bind your button to activity lifecycle
-            bindProgressButton(myButton)
-            
-            // (Optional) Enable fade In / Fade out animations 
-            buttonProgressRightText.attachTextChangeAnimator()
-            
-            // Show progress with "Loading" text
-            button.showProgress {
-                buttonTextRes = R.string.loading
-                progressColor = Color.WHITE
-            }
-            
-            // Hide progress and show "Submit" text instead
-            button.hideProgress(R.string.submit)
-        }
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    // bind your button to activity lifecycle
+    bindProgressButton(myButton)
+
+    // (Optional) Enable fade In / Fade out animations 
+    buttonProgressRightText.attachTextChangeAnimator()
+
+    // Show progress with "Loading" text
+    button.showProgress {
+        buttonTextRes = R.string.loading
+        progressColor = Color.WHITE
+    }
+
+    // Hide progress and show "Submit" text instead
+    button.hideProgress(R.string.submit)
+}
+```
 
 
