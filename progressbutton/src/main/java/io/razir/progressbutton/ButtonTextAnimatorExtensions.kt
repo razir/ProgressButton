@@ -9,12 +9,23 @@ import android.text.SpannableString
 import android.widget.TextView
 import kotlin.collections.ArrayList
 
+/**
+ * adds fade in/fade out animations on drawable/progress showing
+ *
+ * example: button.attachTextChangeAnimator { fadeInMills = 200 }
+ *
+ * @param params config for animations
+ */
 fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams.() -> Unit = {}) {
     val paramValues = TextChangeAnimatorParams()
     paramValues.params()
     attachTextChangeAnimator(paramValues)
 }
 
+/**
+ * adds fade in/fade out animations on drawable/progress showing
+ * @param params config for animations
+ */
 fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams?) {
     val animParams = params?.let { params } ?: TextChangeAnimatorParams()
     if (animParams.useCurrentTextColor) {
@@ -28,6 +39,9 @@ fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams?) {
     attachedViews[this] = params
 }
 
+/**
+ * remove support fade in/fade out animations on drawable/progress showing
+ */
 fun TextView.detachTextChangeAnimator() {
     if (attachedViews.containsKey(this)) {
         cancelAnimations()
@@ -36,6 +50,9 @@ fun TextView.detachTextChangeAnimator() {
     }
 }
 
+/**
+ * checks if animations handler is currently active for the given button
+ */
 fun TextView.isAnimatorAttached(): Boolean {
     return attachedViews.containsKey(this)
 }

@@ -15,8 +15,26 @@ internal val attachedViews = WeakHashMap<TextView, TextChangeAnimatorParams>()
 internal val activeAnimations = WeakHashMap<TextView, MutableList<Animator>>()
 internal val activeViews = WeakHashMap<TextView, DrawableViewData>()
 
-fun LifecycleOwner.bindProgressButton(textView: TextView) {
-    lifecycle.addObserver(ProgressButtonHolder(WeakReference(textView)))
+/**
+ * Binds your buttons to component lifecycle for the correct data recycling
+ * This method is required for all buttons that show progress/drawable
+ * @receiver lifecycle owner to which to bin (eg. Activity, Fragment or other)
+ * @param button button instance to bind
+ */
+fun LifecycleOwner.bindProgressButton(button: TextView) {
+    lifecycle.addObserver(ProgressButtonHolder(WeakReference(button)))
+}
+
+fun TextView.cleanUpDrawable() {
+    if (activeViews.containsKey(this)) {
+        activeViews[this]?.drawable?.apply {
+            if (this is Animatable) {
+                stop()
+            }
+            callback = null
+        }
+        activeViews.remove(this)
+    }
 }
 
 private class ProgressButtonHolder(private val textView: WeakReference<TextView>) : LifecycleObserver {
@@ -47,18 +65,6 @@ internal fun TextView.addDrawableAttachViewListener() {
 
 private fun TextView.removeDrawableAttachViewListener() {
     removeOnAttachStateChangeListener(drawablesAttachListener)
-}
-
-fun TextView.cleanUpDrawable() {
-    if (activeViews.containsKey(this)) {
-        activeViews[this]?.drawable?.apply {
-            if (this is Animatable) {
-                stop()
-            }
-            callback = null
-        }
-        activeViews.remove(this)
-    }
 }
 
 private val textAnimationsAttachListener = object : View.OnAttachStateChangeListener {
