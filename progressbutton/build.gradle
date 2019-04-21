@@ -35,8 +35,8 @@ dependencies {
 }
 
 publish {
-    userOrg = 'antonhadutski'
-    repoName = 'ProgressButton'
+    userOrg = 'razir'
+    repoName = 'maven'
     groupId = 'com.github.razir.progressbutton'
     artifactId = 'progressbutton'
     publishVersion = '1.0.0'
