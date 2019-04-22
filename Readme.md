@@ -40,8 +40,6 @@ override fun onCreate(savedInstanceState: Bundle?) {
     myButton.hideProgress(R.string.submit)
 }
 ```
-You can find the full config here: 
-
 
 ### Showing AnimatedDrawable
 
@@ -57,6 +55,10 @@ button.showDrawable(animatedDrawable) {
 }
 ```
 
+### Detailed doc: [here](DetailedDoc.md)
+
+### Min SDK 14
+
 ### Avoiding memory leaks
 To avoid memory leaks you always need to bind your button to a LifecycleOwner (usually Activity, or Fragment) :
 
@@ -68,4 +70,4 @@ To avoid memory leaks you always need to bind your button to a LifecycleOwner (u
 Apache 2.0
 
 ### Author
-Anton Hadutski
+Anton Hadutski 
