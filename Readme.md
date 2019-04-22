@@ -1,6 +1,7 @@
-# Progress Button Android (In Progress)
+# Progress Button Android
 
-![enter image description here](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/progress_default.gif)
+![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/progress_default.gif) ![progress cebter button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/progress_center.gif)
+![mixed progress button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/mixed.gif)  
 
 #### Add progress to any button by few lines of code without layout changes
 
@@ -27,17 +28,44 @@ override fun onCreate(savedInstanceState: Bundle?) {
     bindProgressButton(myButton)
 
     // (Optional) Enable fade In / Fade out animations 
-    buttonProgressRightText.attachTextChangeAnimator()
+    myButton.attachTextChangeAnimator()
 
     // Show progress with "Loading" text
-    button.showProgress {
+    myButton.showProgress {
         buttonTextRes = R.string.loading
         progressColor = Color.WHITE
     }
 
     // Hide progress and show "Submit" text instead
-    button.hideProgress(R.string.submit)
+    myButton.hideProgress(R.string.submit)
+}
+```
+You can find the full config here: 
+
+
+### Showing AnimatedDrawable
+
+![animated drawable button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/animated_drawable.gif)
+
+```kotlin
+val animatedDrawable = ContextCompat.getDrawable(this, R.drawable.animated_check)  
+//Defined bounds are required for your drawable  
+animatedDrawable.setBounds(0, 0, 40, 40)  
+  
+button.showDrawable(animatedDrawable) {  
+  buttonTextRes = R.string.saved  
 }
 ```
 
+### Avoiding memory leaks
+To avoid memory leaks you always need to bind your button to a LifecycleOwner (usually Activity, or Fragment) :
 
+```kotlin
+[LifecycleOwner].bindProgressButton(button)
+```
+
+### License 
+Apache 2.0
+
+### Author
+Anton Hadutski
