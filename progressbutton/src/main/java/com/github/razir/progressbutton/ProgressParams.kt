@@ -12,27 +12,27 @@ open class ProgressParams : DrawableParams() {
 
     /**
      * Dimension resource used for the progress radius
-     * The default value is 11dp
+     * The default value is 7.5dp
      */
     @DimenRes
     var progressRadiusRes: Int? = null
 
     /**
      * Progress radius size in pixels
-     * The default value is 11dp
+     * The default value is 7.5dp
      */
     var progressRadiusPx: Int = DrawableButton.DEFAULT
 
     /**
      * Dimension resource used for the progress stroke
-     * The default value is 3dp
+     * The default value is 2.5dp
      */
     @DimenRes
     var progressStrokeRes: Int? = null
 
     /**
      * Progress stroke size in pixels
-     * The default value is 3dp
+     * The default value is 2.5dp
      */
     var progressStrokePx: Int = DrawableButton.DEFAULT
 
