@@ -45,7 +45,7 @@ You can find the full config here:
 
 ### Showing AnimatedDrawable
 
-![animated drawable button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/animated_drawable.gif)
+![animated drawable button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/animated_drawable.gif)
 
 ```kotlin
 val animatedDrawable = ContextCompat.getDrawable(this, R.drawable.animated_check)  
