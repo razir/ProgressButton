@@ -1,7 +1,7 @@
-# Progress Button Android
+# Progress Button Android      [ ![Download](https://api.bintray.com/packages/razir/maven/progressbutton/images/download.svg?version=1.0.1) ](https://bintray.com/razir/maven/progressbutton/1.0.1/link) 
 
-![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/progress_default.gif) ![progress cebter button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/progress_center.gif)
-![mixed progress button example](https://raw.githubusercontent.com/razir/ProgressButton/feature/release-1.0.0/gif/mixed.gif)  
+![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_default.gif) ![progress cebter button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_center.gif)
+![mixed progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/mixed.gif)  
 
 #### Add progress to any button by few lines of code without layout changes
 
@@ -14,7 +14,7 @@
 
 ## Gradle dependency 
 
-    implementation 'com.github.razir.progressbutton:progressbutton:1.0.0'
+    implementation 'com.github.razir.progressbutton:progressbutton:1.0.1'
 
 ## How to use
 
