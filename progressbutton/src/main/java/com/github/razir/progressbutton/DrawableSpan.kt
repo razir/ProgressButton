@@ -17,9 +17,9 @@ class DrawableSpan(drawable: Drawable, var paddingStart: Int = 0, var paddingEnd
         val rect = drawable.bounds
         fontMetricsInt?.let {
             val fontMetrics = paint.fontMetricsInt
-            val lineHeight = fontMetrics.descent - fontMetrics.ascent
-            val drHeight = rect.bottom - rect.top
-            val centerY = fontMetrics.ascent + lineHeight / 2
+            val lineHeight = fontMetrics.bottom - fontMetrics.top
+            val drHeight = Math.max(lineHeight, rect.bottom - rect.top)
+            val centerY = fontMetrics.top + lineHeight / 2
             fontMetricsInt.apply {
                 ascent = centerY - drHeight / 2
                 descent = centerY + drHeight / 2
