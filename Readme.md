@@ -13,8 +13,17 @@
   - Built in fade animations
 
 ## Gradle dependency 
-
-    implementation 'com.github.razir.progressbutton:progressbutton:1.0.1'
+```
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+```
+    
+```
+implementation 'com.github.razir.progressbutton:progressbutton:1.0.1'
+```
 
 ## How to use
 
