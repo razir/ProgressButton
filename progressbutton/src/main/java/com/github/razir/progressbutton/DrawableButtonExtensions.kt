@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.CircularProgressDrawable
+import android.support.v7.text.AllCapsTransformationMethod
+import android.support.v7.widget.AppCompatTextView
 import android.text.SpannableString
 import android.text.Spanned
 import android.util.TypedValue
@@ -153,6 +155,13 @@ private fun TextView.showDrawable(
     if (isDrawableActive()) {
         cleanUpDrawable()
     }
+    // Workaround to check if textAllCaps==true on any android api version
+    if (transformationMethod?.javaClass?.name == "android.text.method.AllCapsTransformationMethod" ||
+        transformationMethod is AllCapsTransformationMethod
+    ) {
+        transformationMethod = AllCapsSpannedTransformationMethod(context)
+    }
+
     val drawableMargin = if (textMarginPx == DrawableButton.DEFAULT) {
         context.dpToPixels(DEFAULT_DRAWABLE_MARGIN_DP)
     } else {

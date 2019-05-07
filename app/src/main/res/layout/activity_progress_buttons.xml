@@ -28,6 +28,7 @@
             style="@style/DefaultButtonStyle"
             android:layout_marginTop="@dimen/buttonsMargin"
             android:text="@string/progressLeft"
+            android:textAllCaps="true"
             android:textColor="@color/stateful_text_color"
             app:backgroundTint="@color/blueGrey"
             app:layout_constraintBottom_toTopOf="@id/buttonProgressCenter"
