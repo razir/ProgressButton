@@ -5,6 +5,7 @@ import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.ColorUtils
 import android.text.SpannableString
 import android.widget.TextView
 import kotlin.collections.ArrayList
@@ -66,7 +67,7 @@ internal fun TextView.animateTextChange(newText: SpannableString?) {
     val params = attachedViews[this]!!
     val textColor = getAnimateTextColor()
 
-    val fadeInAnim = ObjectAnimator.ofInt(this, "textColor", Color.TRANSPARENT, textColor)
+    val fadeInAnim = ObjectAnimator.ofInt(this, "textColor", ColorUtils.setAlphaComponent(textColor, 0), textColor)
         .apply {
             duration = params.fadeInMills
             setEvaluator(ArgbEvaluator())
@@ -91,7 +92,7 @@ internal fun TextView.animateTextChange(newText: SpannableString?) {
             start()
         }
 
-    val fadeOutAnim = ObjectAnimator.ofInt(this, "textColor", textColor, Color.TRANSPARENT)
+    val fadeOutAnim = ObjectAnimator.ofInt(this, "textColor", textColor, ColorUtils.setAlphaComponent(textColor, 0))
         .apply {
             duration = params.fadeOutMills
             setEvaluator(ArgbEvaluator())

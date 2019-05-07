@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation "com.android.support:support-v4:$supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
@@ -39,7 +40,7 @@ publish {
     repoName = 'maven'
     groupId = 'com.github.razir.progressbutton'
     artifactId = 'progressbutton'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     desc = 'ProgressButton let you add a progress bar to your button without adjusting a layout'
     website = 'https://github.com/razir/ProgressButton'
 }
