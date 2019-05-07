@@ -40,7 +40,7 @@ publish {
     repoName = 'maven'
     groupId = 'com.github.razir.progressbutton'
     artifactId = 'progressbutton'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     desc = 'ProgressButton let you add a progress bar to your button without adjusting a layout'
     website = 'https://github.com/razir/ProgressButton'
 }
