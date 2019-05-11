@@ -3,6 +3,9 @@
 ![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_default.gif) ![progress cebter button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_center.gif)
 ![mixed progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/mixed.gif)  
 
+#### Article on ProAndroidDev.com explaining how it works
+https://proandroiddev.com/replace-progressdialog-with-a-progress-button-in-your-app-14ed1d50b44
+
 #### Add progress to any button by few lines of code without layout changes
 
 ### Main features: 
