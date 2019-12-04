@@ -1,7 +1,7 @@
 package com.github.razir.progressbutton
 
-import android.support.annotation.DimenRes
-import android.support.annotation.StringRes
+import androidx.annotation.DimenRes
+import androidx.annotation.StringRes
 
 /**
  * Use to customize your progress drawable or other animated drawable

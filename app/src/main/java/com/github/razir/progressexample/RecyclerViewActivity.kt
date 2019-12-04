@@ -1,17 +1,20 @@
 package com.github.razir.progressexample
 
-import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.razir.progressbutton.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.github.razir.progressbutton.attachTextChangeAnimator
+import com.github.razir.progressbutton.bindProgressButton
+import com.github.razir.progressbutton.cleanUpDrawable
+import com.github.razir.progressbutton.showProgress
 import kotlinx.android.synthetic.main.activity_rv.*
 import kotlinx.android.synthetic.main.item_button.view.*
 

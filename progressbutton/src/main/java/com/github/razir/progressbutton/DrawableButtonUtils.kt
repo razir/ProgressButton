@@ -1,8 +1,8 @@
 package com.github.razir.progressbutton
 
 import android.graphics.drawable.Drawable
-import android.support.annotation.StringRes
 import android.widget.TextView
+import androidx.annotation.StringRes
 
 /**
  * Java back support class to show the drawable. If you use kotlin please consider to use extensions

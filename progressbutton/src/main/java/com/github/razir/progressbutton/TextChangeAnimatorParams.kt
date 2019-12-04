@@ -1,8 +1,8 @@
 package com.github.razir.progressbutton
 
 import android.content.res.ColorStateList
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 
 /**
  * progress/drawable button showing animation config

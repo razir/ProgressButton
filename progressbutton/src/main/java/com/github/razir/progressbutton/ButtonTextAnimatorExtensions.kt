@@ -4,10 +4,10 @@ import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.graphics.Color
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.ColorUtils
 import android.text.SpannableString
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import kotlin.collections.ArrayList
 
 /**

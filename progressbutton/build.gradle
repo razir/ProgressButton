@@ -30,8 +30,8 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:support-v4:$supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
