@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="com.razir.progressexample.ProgressButtonsActivity">
+    tools:context="com.github.razir.progressexample.ProgressButtonsActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonProgressRightText"
             style="@style/DefaultButtonStyle"
             android:layout_marginTop="@dimen/buttonsMargin"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonProgressLeftText"
             style="@style/DefaultButtonStyle"
             android:layout_marginTop="@dimen/buttonsMargin"
@@ -36,7 +36,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonProgressRightText" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonProgressCenter"
             style="@style/DefaultButtonStyle"
             android:layout_marginTop="@dimen/buttonsMargin"
@@ -47,7 +47,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonProgressLeftText" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonProgressCustomStyle"
             style="@style/DefaultButtonStyle"
             android:layout_marginTop="@dimen/buttonsMargin"
@@ -58,5 +58,5 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonProgressCenter" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

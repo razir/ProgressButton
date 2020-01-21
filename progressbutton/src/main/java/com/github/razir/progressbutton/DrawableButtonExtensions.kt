@@ -3,15 +3,14 @@ package com.github.razir.progressbutton
 import android.content.Context
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.CircularProgressDrawable
-import android.support.v7.text.AllCapsTransformationMethod
-import android.support.v7.widget.AppCompatTextView
 import android.text.SpannableString
 import android.text.Spanned
 import android.util.TypedValue
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.appcompat.text.AllCapsTransformationMethod
+import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 
 /**
  *   Shows progress on the button with defined params.

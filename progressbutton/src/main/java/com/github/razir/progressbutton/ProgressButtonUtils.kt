@@ -1,7 +1,7 @@
 package com.github.razir.progressbutton
 
-import android.support.annotation.StringRes
 import android.widget.TextView
+import androidx.annotation.StringRes
 
 /**
  * Java back support class to show the progress. If you use kotlin please consider to use extensions
