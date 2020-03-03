@@ -5,9 +5,8 @@ import android.graphics.drawable.Animatable
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -38,16 +37,17 @@ fun TextView.cleanUpDrawable() {
 }
 
 private class ProgressButtonHolder(private val textView: WeakReference<TextView>) :
-    LifecycleObserver {
+    LifecycleEventObserver {
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        textView.get()?.let {
-            it.cancelAnimations()
-            it.cleanUpDrawable()
-            it.removeTextAnimationAttachViewListener()
-            it.removeDrawableAttachViewListener()
-            attachedViews.remove(it)
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        if (event == Lifecycle.Event.ON_DESTROY) {
+            textView.get()?.let {
+                it.cancelAnimations()
+                it.cleanUpDrawable()
+                it.removeTextAnimationAttachViewListener()
+                it.removeDrawableAttachViewListener()
+                attachedViews.remove(it)
+            }
         }
     }
 }
