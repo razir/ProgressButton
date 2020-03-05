@@ -1,4 +1,4 @@
-# Progress Button Android  [ ![Download](https://api.bintray.com/packages/razir/maven/progressbutton/images/download.svg?version=2.0.0) ](https://bintray.com/razir/maven/progressbutton/1.0.3/link)
+# Progress Button Android  [ ![Download](https://api.bintray.com/packages/razir/maven/progressbutton/images/download.svg?version=2.0.1) ](https://bintray.com/razir/maven/progressbutton/2.0.1/link)
 
 ![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_default.gif) ![progress cebter button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_center.gif)
 ![mixed progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/mixed.gif)  
@@ -25,7 +25,7 @@ allprojects {
 ```
     
 ```
-implementation 'com.github.razir.progressbutton:progressbutton:2.0.0'
+implementation 'com.github.razir.progressbutton:progressbutton:2.0.1'
 ```
 
 ## How to use
