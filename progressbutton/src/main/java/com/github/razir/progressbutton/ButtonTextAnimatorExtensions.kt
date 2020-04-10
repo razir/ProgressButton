@@ -17,6 +17,7 @@ import kotlin.collections.ArrayList
  *
  * @param params config for animations
  */
+@JvmOverloads
 fun TextView.attachTextChangeAnimator(params: TextChangeAnimatorParams.() -> Unit = {}) {
     val paramValues = TextChangeAnimatorParams()
     paramValues.params()

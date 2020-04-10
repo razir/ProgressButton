@@ -27,6 +27,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
  *   @receiver button to show the progress
  *   @param params use to set the text,position and customize the progress look
  */
+@JvmOverloads
 fun TextView.showProgress(params: ProgressParams.() -> Unit = {}) {
     val paramValues = ProgressParams()
     paramValues.params()
@@ -50,6 +51,7 @@ fun TextView.showProgress(params: ProgressParams.() -> Unit = {}) {
  *   @param drawable your animated drawable. Will be played automatically
  *   @param params use to set the text,position and margin
  */
+@JvmOverloads
 fun TextView.showDrawable(
     drawable: Drawable,
     params: DrawableParams.() -> Unit = {}
@@ -76,6 +78,7 @@ fun TextView.isDrawableActive(): Boolean {
  * This method is required to call if you want to continue using your button
  * @param newText String value to show after hiding the progress
  */
+@JvmOverloads
 fun TextView.hideProgress(newText: String? = null) = hideDrawable(newText)
 
 /**
@@ -90,6 +93,7 @@ fun TextView.hideProgress(@StringRes newTextRes: Int) = hideDrawable(newTextRes)
  * This method is required to call if you want to continue using your button
  * @param newText String value to show after hiding the progress
  */
+@JvmOverloads
 fun TextView.hideDrawable(newText: String? = null) {
     cleanUpDrawable()
     if (isAnimatorAttached()) {
