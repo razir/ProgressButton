@@ -69,6 +69,8 @@ button.showDrawable(animatedDrawable) {
 
 ### Detailed doc: [here](DetailedDoc.md)
 
+### Java samples: [here](app/src/main/java/com/github/razir/progressexample/java)
+
 ### Min SDK 14
 
 ### Avoiding memory leaks
