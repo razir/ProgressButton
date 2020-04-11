@@ -13,4 +13,7 @@
     <string name="openProgressButtons">See Progress Buttons</string>
     <string name="openDrawableButtons">See animated drawable buttons</string>
     <string name="openRecyclerView">see recycler view example</string>
+    <string name="openProgressButtonsJava">See Progress Buttons In Java</string>
+    <string name="openDrawableButtonsJava">See animated drawable buttons In Java</string>
+    <string name="openRecyclerViewJava">see recycler view example In Java</string>
 </resources>

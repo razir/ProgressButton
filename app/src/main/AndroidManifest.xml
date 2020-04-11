@@ -18,8 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name="com.github.razir.progressexample.DrawableButtonsActivity" />
+        <activity android:name="com.github.razir.progressexample.java.DrawableButtonsActivity" />
         <activity android:name="com.github.razir.progressexample.ProgressButtonsActivity" />
+        <activity android:name="com.github.razir.progressexample.java.ProgressButtonsActivity" />
         <activity android:name="com.github.razir.progressexample.RecyclerViewActivity" />
+        <activity android:name="com.github.razir.progressexample.java.RecyclerViewActivity" />
 
     </application>
 

@@ -14,12 +14,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(ProgressButtonsActivity.getStartIntent(this))
         }
 
+        openProgressButtonsJava.setOnClickListener {
+            startActivity(com.github.razir.progressexample.java.ProgressButtonsActivity.getStartIntent(this))
+        }
+
         openDrawableButtons.setOnClickListener {
             startActivity(DrawableButtonsActivity.getStartIntent(this))
         }
 
+        openDrawableButtonsJava.setOnClickListener {
+            startActivity(com.github.razir.progressexample.java.DrawableButtonsActivity.getStartIntent(this))
+        }
+
         openRecyclerView.setOnClickListener {
             startActivity(RecyclerViewActivity.getStartIntent(this))
+        }
+
+        openRecyclerViewJava.setOnClickListener {
+            startActivity(com.github.razir.progressexample.java.RecyclerViewActivity.getStartIntent(this))
         }
     }
 }
