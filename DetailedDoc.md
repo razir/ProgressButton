@@ -2,6 +2,8 @@
 
 Quick setup can be found [here](Readme.md)
 
+Java samples: [here](app/src/main/java/com/github/razir/progressexample/java)
+
 ## Showing Progress
 
 ![basic progress button example](https://raw.githubusercontent.com/razir/ProgressButton/master/gif/progress_default.gif)
