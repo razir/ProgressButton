@@ -180,9 +180,6 @@ private fun TextView.showDrawable(
 
     addDrawableAttachViewListener()
     setupDrawableCallback(this, drawable)
-    if (drawable is Animatable) {
-        drawable.start()
-    }
 }
 
 private fun setupDrawableCallback(textView: TextView, drawable: Drawable) {
