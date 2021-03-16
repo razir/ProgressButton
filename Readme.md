@@ -19,7 +19,7 @@ https://proandroiddev.com/replace-progressdialog-with-a-progress-button-in-your-
 ```
 allprojects {
   repositories {
-    jcenter()
+    mavenCentral()
   }
 }
 ```
